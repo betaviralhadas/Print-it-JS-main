@@ -25,3 +25,20 @@ console.log(arrow_left);
 console.log(arrow_right);
 
 let positionimg = 0;
+
+arrow_left.addEventListener("click", ()=>{
+	console.log("boutton gauche");
+
+	positionimg = positionimg - 1;
+	
+	//se a posicao e inferiora 0 mete na posicao -1
+	if(positionimg<0){
+		positionimg=slides.length -1;
+	}
+	for(let i=0; i<dot.length;i++){
+		dot[i].classList.remove("dot_selected");//elimina todos os pontos d selecao
+	}
+	banner_img.src = "./assets/images/slideshow/" + slides[positionimg].image;
+	banner_text.innerHTML = slides[positionimg].tagLine;
+	//para adicionar um atributo class, pegamos o nome da balise e juntamos o cclasslist
+	dot[positionimg].classList.add("dot_selected");
