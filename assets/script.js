@@ -42,3 +42,13 @@ arrow_left.addEventListener("click", ()=>{
 	banner_text.innerHTML = slides[positionimg].tagLine;
 	//para adicionar um atributo class, pegamos o nome da balise e juntamos o cclasslist
 	dot[positionimg].classList.add("dot_selected");
+});
+arrow_right.addEventListener("click", ()=>{
+	console.log("boutton droit");
+	positionimg = positionimg +1;
+	//a posicao e superior a -1 mete a posicao a 0
+	if(positionimg >slides.length -1){
+		positionimg= 0;
+	}
+	banner_img.src = "./assets/images/slideshow/" + slides[positionimg].image;
+});
