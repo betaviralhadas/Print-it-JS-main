@@ -18,37 +18,38 @@ const slides = [
 ]
 const banner_img = document.querySelector(".banner-img");
 const arrow_left = document.querySelector(".arrow_left");
+console.log(arrow_left);
 const arrow_right = document.querySelector(".arrow_right");
+console.log(arrow_right);
 const banner_text = document.querySelector(".banner_text");
 const dot = document.querySelectorAll(".dot");
-console.log(arrow_left);
-console.log(arrow_right);
 
 let positionimg = 0;
 
 arrow_left.addEventListener("click", ()=>{
 	console.log("boutton gauche");
-
 	positionimg = positionimg - 1;
-	
-	//se a posicao e inferiora 0 mete na posicao -1
 	if(positionimg<0){
 		positionimg=slides.length -1;
 	}
 	for(let i=0; i<dot.length;i++){
-		dot[i].classList.remove("dot_selected");//elimina todos os pontos d selecao
+		dot[i].classList.remove("dot_selected");
 	}
 	banner_img.src = "./assets/images/slideshow/" + slides[positionimg].image;
 	banner_text.innerHTML = slides[positionimg].tagLine;
-	//para adicionar um atributo class, pegamos o nome da balise e juntamos o cclasslist
 	dot[positionimg].classList.add("dot_selected");
 });
+
 arrow_right.addEventListener("click", ()=>{
 	console.log("boutton droit");
 	positionimg = positionimg +1;
-	//a posicao e superior a -1 mete a posicao a 0
 	if(positionimg >slides.length -1){
 		positionimg= 0;
 	}
+	for(let i=0; i<dot.length;i++){
+		dot[i].classList.remove("dot_selected");
+	}
 	banner_img.src = "./assets/images/slideshow/" + slides[positionimg].image;
+	banner_text.innerHTML = slides[positionimg].tagLine;
+	dot[positionimg].classList.add("dot_selected");
 });
